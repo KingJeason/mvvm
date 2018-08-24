@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RRC</title>
+</head>
+
+<body>
+
+    <div id="rrc-app">
+        {{str}}
+        <input type="text" v-bind:value="child.someStr">
+        <p>{{str}}</p>
+        <button v-on:click="clickBtn">点击改变child</button>
+    </div>
+
+    <!-- <script src="http://cdn.bootcss.com/vue/1.0.25/vue.js"></script> -->
+    <script src="./obsever.js"></script>
+    <script src="./watcher.js"></script>
+    <script src="./compile.js"></script>
+    <script src="./mvvm.js"></script>
+    <script>
+        var vm = new MVVM({
+            el: '#rrc-app',
+            data: {
+                str: 'hello ',
+                child: {
+                    someStr: 'World !'
+                }
+            },
+
+            computed: {
+                // getHelloWord: function () {
+                //     return this.str + this.child.someStr;
+                // }
+            },
+
+            methods: {
+                clickBtn: function (e) {
+                    this.child = {
+                        someStr: 'RRC'
+                    }
+                }
+            }
+        });
+        console.log(vm)
+    </script>
+
+</body>
+
+</html>
